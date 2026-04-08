@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { BookContext } from '../../context/BookProvider';
+import Book from '../book/Book';
+import { Link } from 'react-router';
 
 const ReadList = () => {
+    const { readListBooks } = useContext(BookContext);
+    if (readListBooks.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center text-center py-20 px-4">
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png"
+                    alt="Empty"
+                    className="w-40 mb-6 opacity-80"
+                />
+
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-2">
+                    No Books Yet
+                </h2>
+
+                <p className="text-gray-500 max-w-md mb-6">
+                    You haven’t added any books to your reading list. Start exploring and add your favorite books.
+                </p>
+
+                <Link
+                    to="/"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow transition"
+                >
+                    Browse Books
+                </Link>
+            </div>
+        );
+    }
     return (
         <div>
-            Read List
+            {readListBooks.map(book => <Book key={book.bookId} book={book} />)}
         </div>
     );
 };
