@@ -15,7 +15,7 @@ const WishList = ({shortingType}) => {
                      const shortedData = [...wishListBooks].sort((a, b) => a.totalPages - b.totalPages);
                      setFilteredWishList(shortedData)
                  }else if (shortingType === 'rating'){
-                      const shortedData = [...wishListBooks].sort((a, b) => a.rating - b.rating);
+                      const shortedData = [...wishListBooks].sort((a, b) =>  b.rating - a.rating);
                      setFilteredWishList(shortedData)
                  }else if (shortingType === 'publishing year') {
                 const shortedData = [...wishListBooks].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing );

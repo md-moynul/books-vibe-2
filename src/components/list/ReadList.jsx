@@ -14,7 +14,7 @@ const ReadList = ({ shortingType }) => {
                 const shortedData = [...readListBooks].sort((a, b) => a.totalPages - b.totalPages);
                 setFilteredReadList(shortedData)
             } else if (shortingType === 'rating') {
-                const shortedData = [...readListBooks].sort((a, b) => a.rating - b.rating);
+                const shortedData = [...readListBooks].sort((a, b) => b.rating - a.rating);
                 setFilteredReadList(shortedData)
             }
             else if (shortingType === 'publishing year') {
