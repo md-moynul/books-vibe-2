@@ -1,12 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BookContext } from '../../context/BookProvider';
 import Book from '../book/Book';
 import { Link } from 'react-router';
 import ListedBook from './ListedBook';
 
-const ReadList = () => {
+const ReadList = ({ shortingType }) => {
     const { readListBooks } = useContext(BookContext);
-    if (readListBooks.length === 0) {
+    const [filteredReadList, setFilteredReadList] = useState(readListBooks)
+
+    useEffect(() => {
+        if (shortingType) {
+            if (shortingType === 'pages') {
+                const shortedData = [...readListBooks].sort((a, b) => a.totalPages - b.totalPages);
+                setFilteredReadList(shortedData)
+            } else if (shortingType === 'rating') {
+                const shortedData = [...readListBooks].sort((a, b) => a.rating - b.rating);
+                setFilteredReadList(shortedData)
+            }
+            else if (shortingType === 'publishing year') {
+                const shortedData = [...readListBooks].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing );
+                setFilteredReadList(shortedData)
+            }
+        }
+    }, [shortingType, readListBooks])
+
+
+    if (filteredReadList.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center text-center py-20 px-4">
                 <img
@@ -35,9 +54,9 @@ const ReadList = () => {
     return (
         <div>
             <div>
-                {readListBooks.map(book => <ListedBook key={book.bookId} book={book} />)}
+                {filteredReadList.map(book => <ListedBook key={book.bookId} book={book} />)}
             </div>
-            
+
         </div>
     );
 };

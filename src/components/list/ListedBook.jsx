@@ -9,9 +9,9 @@ const ListedBook = ({ book }) => {
             <figure>
                 <div className='flex justify-center items-center bg-gray-100 py-8 rounded-2xl w-full'>
                     <img
-                        className='w-30 h-41 object-contain'
+                        className='w-40 h-60 object-contain'
                         src={image}
-                        alt="Shoes" />
+                        alt={`${bookName} book image`} />
                 </div>
             </figure>
             <div className="card-body space-y-4 col-span-2 lg:col-span-3">

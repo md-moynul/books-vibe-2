@@ -1,12 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BookContext } from '../../context/BookProvider';
 import Book from '../book/Book';
 import { Link } from 'react-router';
 import ListedBook from './ListedBook';
 
 
-const WishList = () => {
+const WishList = ({shortingType}) => {
      const {  wishListBooks } = useContext(BookContext)
+     const [filteredWishList, setFilteredWishList] = useState(wishListBooks)
+     
+         useEffect(() => {
+             if (shortingType) {
+                 if (shortingType === 'pages') {
+                     const shortedData = [...wishListBooks].sort((a, b) => a.totalPages - b.totalPages);
+                     setFilteredWishList(shortedData)
+                 }else if (shortingType === 'rating'){
+                      const shortedData = [...wishListBooks].sort((a, b) => a.rating - b.rating);
+                     setFilteredWishList(shortedData)
+                 }else if (shortingType === 'publishing year') {
+                const shortedData = [...wishListBooks].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing );
+                setFilteredWishList(shortedData)
+            }
+             }
+         }, [shortingType, wishListBooks])
+     
      if (wishListBooks.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center text-center py-20 px-4">
@@ -35,7 +52,7 @@ const WishList = () => {
     }
     return (
         <div>
-            {wishListBooks.map(book => <ListedBook key={book.bookId} book={book} />)}
+            {filteredWishList.map(book => <ListedBook key={book.bookId} book={book} />)}
         </div>
     );
 };
