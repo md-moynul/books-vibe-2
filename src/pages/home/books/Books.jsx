@@ -11,8 +11,8 @@ const Books = () => {
     return (
         <Tabs>
             <TabList>
-                <Tab>Title 1</Tab>
-                <Tab>Title 2</Tab>
+                <Tab>Read list ({readListBooks.length})</Tab>
+                <Tab>Wish list ({wishListBooks.length})</Tab>
             </TabList>
 
             <TabPanel>
