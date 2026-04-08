@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { BookContext } from '../../context/BookProvider';
 import Book from '../book/Book';
 import { Link } from 'react-router';
+import ListedBook from './ListedBook';
 
 const ReadList = () => {
     const { readListBooks } = useContext(BookContext);
@@ -33,7 +34,10 @@ const ReadList = () => {
     }
     return (
         <div>
-            {readListBooks.map(book => <Book key={book.bookId} book={book} />)}
+            <div>
+                {readListBooks.map(book => <ListedBook key={book.bookId} book={book} />)}
+            </div>
+            
         </div>
     );
 };

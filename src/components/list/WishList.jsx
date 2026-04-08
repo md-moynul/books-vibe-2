@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { BookContext } from '../../context/BookProvider';
 import Book from '../book/Book';
 import { Link } from 'react-router';
+import ListedBook from './ListedBook';
 
 
 const WishList = () => {
@@ -34,7 +35,7 @@ const WishList = () => {
     }
     return (
         <div>
-            {wishListBooks.map(book => <Book key={book.bookId} book={book} />)}
+            {wishListBooks.map(book => <ListedBook key={book.bookId} book={book} />)}
         </div>
     );
 };
