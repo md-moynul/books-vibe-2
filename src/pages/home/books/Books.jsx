@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { BookContext } from '../../../context/BookProvider';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import ReadList from '../../../components/list/ReadList';
+import WishList from '../../../components/list/WishList';
 
 
 const Books = () => {
     const { readListBooks, wishListBooks } = useContext(BookContext)
-    console.log(readListBooks, wishListBooks);
+   
 
     return (
         <Tabs>
@@ -16,10 +18,10 @@ const Books = () => {
             </TabList>
 
             <TabPanel>
-                <h2>Any content 1</h2>
+                <ReadList/>
             </TabPanel>
             <TabPanel>
-                <h2>Any content 2</h2>
+               <WishList/>
             </TabPanel>
         </Tabs>
     );
