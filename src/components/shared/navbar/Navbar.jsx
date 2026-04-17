@@ -9,7 +9,7 @@ const Navbar = () => {
         <li>
             <NavLink className={({ isActive }) => `${isActive ? ' btn-success btn-outline' : ''} mr-5 font-semibold btn`} to={'/books'}>Listed Books</NavLink></li>
         <li>
-            <NavLink className={({ isActive }) => `${isActive ? ' btn-success btn-outline' : ''} mr-5 font-semibold btn`} to={'/page'}>Pages to Read</NavLink></li>
+            <NavLink className={({ isActive }) => `${isActive ? ' btn-success btn-outline' : ''} mr-5 font-semibold btn`} to={'/pages'}>Pages to Read</NavLink></li>
     </>
     return (
         <div className='bg-base-100 shadow-sm'>
